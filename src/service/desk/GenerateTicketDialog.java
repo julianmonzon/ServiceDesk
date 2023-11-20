@@ -33,7 +33,7 @@ public class GenerateTicketDialog extends JDialog {
         priorityComboBox = new JComboBox<>(priorities);
 
         JLabel productLabel = new JLabel("Producto:");
-        // Asumiendo que ya tienes un método para obtener la lista de productos
+        
         String[] products = {"Producto1", "Producto2", "Producto3"};
         productComboBox = new JComboBox<>(products);
 
@@ -111,8 +111,7 @@ public class GenerateTicketDialog extends JDialog {
             // Obtiene el archivo seleccionado
             java.io.File selectedFile = fileChooser.getSelectedFile();
 
-            // Aquí puedes realizar la lógica para manejar el archivo seleccionado
-            // Por ejemplo, puedes guardar la ruta del archivo en una variable o realizar alguna acción específica
+           
             String filePath = selectedFile.getAbsolutePath();
             System.out.println("Archivo seleccionado: " + filePath);
         } else {

@@ -67,5 +67,5 @@ public class UserModel {
         this.category = category;
     }
 
-    // Otros métodos según sea necesario
+    
 }

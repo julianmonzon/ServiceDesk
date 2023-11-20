@@ -45,8 +45,6 @@ public class LoginDialog extends JDialog {
     }
 
     private void checkCredentials() {
-        // Lógica para verificar las credenciales
-        // Aquí deberías comparar el usuario y la contraseña ingresados con valores válidos
         // Por ahora, se considerará que cualquier usuario y contraseña son válidos
         loggedIn = true;
         dispose();

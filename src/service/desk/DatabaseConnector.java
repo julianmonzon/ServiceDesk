@@ -13,7 +13,7 @@ public class DatabaseConnector {
             connection = DriverManager.getConnection(url);
             connection.createStatement().executeUpdate("PRAGMA foreign_keys = ON;");
             createTable();
-            createUserTable(); // Añade esta línea para crear la tabla 'users'
+            createUserTable();
         }
         return connection;
     }

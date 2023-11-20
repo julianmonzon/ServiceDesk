@@ -26,7 +26,7 @@ public class MyResultSet {
                     return ticket.getId();
                 case "userid":
                     return ticket.getUserId();
-                // Agrega más casos según las columnas que tengas en TicketModel
+                
                 default:
                     throw new IllegalArgumentException("Columna no válida: " + columnName);
             }
@@ -43,7 +43,7 @@ public class MyResultSet {
                     return ticket.getPriority();
                 case "product":
                     return ticket.getProduct();
-                // Agrega más casos según las columnas que tengas en TicketModel
+                
                 default:
                     throw new IllegalArgumentException("Columna no válida: " + columnName);
             }
