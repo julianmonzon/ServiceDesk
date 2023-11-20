@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class GenerateTicketDialog extends JDialog {
     private TicketDAO ticketDAO;
@@ -77,7 +79,14 @@ public class GenerateTicketDialog extends JDialog {
 
         if (!description.isEmpty()) {
             try {
-                ticketDAO.createTicket(new TicketModel(0, 1, priority, product, "ClientPlaceholder", description, "En Revisión", "FechaPlaceholder", "FechaPlaceholder"));
+                // Obtener la fecha actual
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                Date currentDate = new Date();
+                String currentDateString = dateFormat.format(currentDate);
+
+                TicketModel newTicket = new TicketModel(0, 1, priority, product, "ClientPlaceholder", description, "En Revisión", currentDateString, currentDateString);
+                ticketDAO.createTicket(newTicket);
+
                 JOptionPane.showMessageDialog(this, "Ticket generado exitosamente");
                 dispose();
             } catch (SQLException ex) {
@@ -89,7 +98,25 @@ public class GenerateTicketDialog extends JDialog {
     }
 
     private void attachFile() {
-        // Lógica para adjuntar un archivo
-        // Puedes implementar esta función según tus necesidades
+        JFileChooser fileChooser = new JFileChooser();
+
+        // Configura el cuadro de diálogo para permitir la selección de archivos
+        fileChooser.setDialogTitle("Seleccionar Archivo");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        // Muestra el cuadro de diálogo
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            // Obtiene el archivo seleccionado
+            java.io.File selectedFile = fileChooser.getSelectedFile();
+
+            // Aquí puedes realizar la lógica para manejar el archivo seleccionado
+            // Por ejemplo, puedes guardar la ruta del archivo en una variable o realizar alguna acción específica
+            String filePath = selectedFile.getAbsolutePath();
+            System.out.println("Archivo seleccionado: " + filePath);
+        } else {
+            System.out.println("Selección de archivo cancelada");
+        }
     }
 }
